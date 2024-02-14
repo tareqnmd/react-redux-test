@@ -5,7 +5,7 @@ export const store = configureStore({
 	reducer: {
 		[apiSlice.reducerPath]: apiSlice.reducer,
 	},
-	devTools: import.meta.env.NODE_ENV !== 'production',
+	devTools: import.meta.env.VITE_APP_NODE_ENV !== 'production',
 	middleware: (getDefaultMiddlewares) =>
 		getDefaultMiddlewares().concat(apiSlice.middleware),
 });

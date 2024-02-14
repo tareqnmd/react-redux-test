@@ -1,14 +1,16 @@
 import { useGetAllTodoQuery } from '../features/todo/api';
-
+type TypeTodo = {
+	title: string;
+};
 const AllTodo = () => {
-	const { data } = useGetAllTodoQuery({});
-	console.log('allTodo', data);
+	const { data: allTodo } = useGetAllTodoQuery({});
 	return (
 		<>
-			asd
-			{/* {allTodo?.map((todo: any) => (
-				<></>
-			))} */}
+			<div className="grid grid-col-3 gap">
+				{allTodo?.map((todo: TypeTodo) => (
+					<div className="card">{todo.title}</div>
+				))}
+			</div>
 		</>
 	);
 };
