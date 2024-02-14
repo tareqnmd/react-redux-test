@@ -1,5 +1,11 @@
+import AllTodo from './components/AllTodo';
+
 const App = () => {
-	return <></>;
+	return (
+		<>
+			<AllTodo />
+		</>
+	);
 };
 
 export default App;
