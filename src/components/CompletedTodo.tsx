@@ -5,25 +5,23 @@ import { getTodoSate } from '../features/todo/slice';
 import { TypeTodo } from './TodoCard';
 import TodoListLayout from './TodoLayout';
 
-const AllTodo = () => {
+const CompletedTodo = () => {
 	const { data } = useGetAllTodoQuery({});
-	const { deleted, completed } = useSelector(getTodoSate);
+	const { completed } = useSelector(getTodoSate);
 	const [todoList, setTodoList] = useState([]);
 	useEffect(() => {
 		data?.length > 0 &&
 			setTodoList(
-				data?.filter(
-					(item: TypeTodo) => ![...completed, ...deleted].includes(item.id)
-				)
+				data?.filter((item: TypeTodo) => completed.includes(item.id))
 			);
-	}, [data, deleted, completed]);
+	}, [data, completed]);
 
 	return (
 		<TodoListLayout
-			title={`Running Tasks(${todoList.length}) :`}
+			title={`Completed Tasks(${todoList.length}) :`}
 			todoList={todoList}
 		/>
 	);
 };
 
-export default AllTodo;
+export default CompletedTodo;

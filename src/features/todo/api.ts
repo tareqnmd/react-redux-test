@@ -4,7 +4,7 @@ export const todoApi = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getAllTodo: builder.query({
 			query: () => ({
-				url: '/todos',
+				url: '/todos?_page=1',
 			}),
 		}),
 	}),
